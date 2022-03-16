@@ -10,7 +10,7 @@ const Navbar = () => {
                     <li><a href={ urla }>IP</a></li>
                     <li><a href={ urlb }>JJ</a></li>
                     <li><a href={ urlc }>Code</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="./contact">Contact</a></li>
             </nav>
             <br />
         </div>

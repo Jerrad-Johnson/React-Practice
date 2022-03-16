@@ -4,7 +4,6 @@ import Home from "./Home";
 
 function App() {
 
-    let title = "I hate you";
   return (
     <div className="App">
         <Navbar />
