@@ -1,27 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Array from './Array';
 
 function cc(arg){
     console.log(arg);
 }
 
-
-
-
 const Home = () => {
-    const [arrayOfPeople, setArrayOfPeople] = useState([
-        { name: "Tommy", age: 30, occupation: "Unemployed", id: 1 },
-        { name: "Jerrad", age: 32, occupation: "Master", id: 2 },
-    ]);
 
-const handleDelete = (id) => {
-    const newPeople = arrayOfPeople.filter(person => person.id !== id);
-    setArrayOfPeople(newPeople);
-}
+const [name, setName] = useState('Tommy');
+
+
+useEffect(() => {
+    cc("test");
+}, [name]);
 
     return (
         <div className="Home">
-            <Array arrayOfPeople={arrayOfPeople} handleDelete={handleDelete}/>
+            <button onClick={() => setName('Jerrad')}>change name</button>
+            <p>{ name }</p>
         </div>
     );
 }
