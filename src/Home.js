@@ -7,8 +7,8 @@ function cc(arg){
 
 const Home = () => {
 
-const [name, setName] = useState('Tommy');
 const [colors, setColors] = useState(null);
+const [isPending, setIsPending] = useState(true);
 
 useEffect(() => {
     fetch('http://localhost:8000/colors')
@@ -17,16 +17,15 @@ useEffect(() => {
         })
         .then(data => {
             setColors(data);
+            setIsPending(false);
         });
     }, []);
 
 
     return (
         <div className="Home">
-            <button onClick={() => setName('Jerrad')}>change name</button>
-
+            {isPending && <div>Loading...</div>}
             {colors && <Array colors={colors} />}
-            <p>{ name }</p>
         </div>
     );
 }
