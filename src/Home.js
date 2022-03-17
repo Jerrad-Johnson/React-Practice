@@ -8,18 +8,29 @@ function cc(arg){
 const Home = () => {
 
 const [name, setName] = useState('Tommy');
-
+const [colors, setColors] = useState(null);
 
 useEffect(() => {
-    cc("test");
-}, [name]);
+    fetch('http://localhost:8000/colors')
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            setColors(data);
+        });
+    }, []);
+
 
     return (
         <div className="Home">
             <button onClick={() => setName('Jerrad')}>change name</button>
+
+            {colors && <Array colors={colors} />}
             <p>{ name }</p>
         </div>
     );
 }
+
+
 
 export default Home;

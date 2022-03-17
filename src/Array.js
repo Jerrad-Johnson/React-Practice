@@ -1,14 +1,11 @@
-const Array = ({ arrayOfPeople, handleDelete }) => {
-
-    const listOfPeople = arrayOfPeople;
+const Array = ({ colors }) => {
 
     return (
         <div className="people">
-            { listOfPeople.map((person) => (
-                <div className="name" key={person.id}>
-                    <h2>{ person.name }</h2>
-                    <h2>{ person.age }</h2>
-                    <button onClick={() => handleDelete(person.id)}>Delete</button>
+            { colors.map((color) => (
+                <div className="name" key={color.id}>
+                    <h2>{ color.value }</h2>
+                    <h2>{ color.id }</h2>
                     <br /><br />
                 </div>
             ))}

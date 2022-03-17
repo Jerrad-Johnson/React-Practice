@@ -1,0 +1,13 @@
+{
+  "colors": [
+    {"color1": "red", "value": "255-0-0",
+      "id": 1
+    },
+    {"color2": "green", "value": "0-255-0",
+      "id": 2
+    },
+    {"color3": "blue", "value": "0-0-255",
+      "id": 3
+    }
+  ]
+}
