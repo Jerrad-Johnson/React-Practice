@@ -22,6 +22,7 @@ useEffect(() => {
         .then(data => {
             setColors(data);
             setIsPending(false)
+            setError(false);
         }).catch(err => {
             setError(err.message);
             setIsPending(false);
