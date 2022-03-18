@@ -7,7 +7,9 @@ const useFetch = (url) => { // custom hooks must always start with "use"
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url)
+        const abort = new AbortController();
+
+        fetch(url, {signal: abort.signal })
             .then(response => {
                 if (!response.ok) {
                     throw Error("No response from the server.");
@@ -19,9 +21,15 @@ const useFetch = (url) => { // custom hooks must always start with "use"
                 setIsPending(false)
                 setError(false);
             }).catch(err => {
+                if (err.name === 'AbortError'){
+                    return;
+                }
             setError(err.message);
             setIsPending(false);
         });
+
+        return () => abort.abort();
+
     }, [url]);
 
     return {data, isPending, error}

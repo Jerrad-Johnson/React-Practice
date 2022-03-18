@@ -1,16 +1,12 @@
-let urla = "https://idealportraits.com";
-let urlb = "https://jerradjohnson.com";
-let urlc = "https://codersion.com";
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
     return (
         <div className="nav">
             <nav className="navbar">
-                    <li><a href="/">Home</a></li>
-                    <li><a href={ urla }>IP</a></li>
-                    <li><a href={ urlb }>JJ</a></li>
-                    <li><a href={ urlc }>Code</a></li>
-                    <li><a href="./contact">Contact</a></li>
+                <Link to="/">Home </Link>
+                <Link to="/Create">Add Blog </Link>
             </nav>
             <br />
         </div>
