@@ -1,9 +1,11 @@
 import {useState} from "react";
+import {useHistory} from "react-router-dom";
 
 const Create = () => {
     const [color, setColor] = useState('');
     const [value, setValue] = useState('');
     const [isPending, setIsPending] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,8 +19,9 @@ const Create = () => {
             body: JSON.stringify(entry)
         }).then(() => {
             setIsPending(false);
+            history.push('/');
         })
-    }
+}
 
 
     return (
