@@ -3,12 +3,23 @@ import {useState} from "react";
 const Create = () => {
     const [color, setColor] = useState('');
     const [value, setValue] = useState('');
+    const [isPending, setIsPending] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const entry = {color, value};
 
-        console.log(entry);
+        setIsPending(true);
+
+        fetch('http://localhost:8000/colors', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(entry)
+        }).then(() => {
+            setIsPending(false);
+        })
     }
+
 
     return (
         <div className="create">
@@ -29,7 +40,7 @@ const Create = () => {
                     onChange={(v) => setValue(v.target.value)}
                 ></textarea>
                 <br /><br />
-                <input type="submit"></input>
+                {!isPending && <input type="submit"></input>}
             </form>
         </div>
     );
